@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  ratp-technical-test:
+    build:
+      context: .
+      target: development
+      shm_size: 512M
+    image: ds/ratp-technical-test
+    user: node
+    environment:
+      - RATP_HOST=ratp-technical-test
+    ports:
+      - '127.0.0.1:3300:3300'
+      - '9230:9229'
+    volumes:
+      - .:/ratp-technical-test
+      - /ratp-technical-test/node_modules
+    init: true
+    stdin_open: true
+    tty: true
+    security_opt:
+      - no-new-privileges

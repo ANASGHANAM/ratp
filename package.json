@@ -1,0 +1,64 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@ratp-technical-test.lexfo.fr:Back/ratp-technical-test.git"
+  },
+  "author": "AGH",
+  "engines": {
+    "node": "16.14.2"
+  },
+  "name": "ratp-technical-test",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "./lib/index.js",
+  "scripts": {
+    "start": "node --inspect=0.0.0.0:9230 ./lib/src/index.js",
+    "compile": "tsc --build --clean && tsc -p .",
+    "watch-and-start": "tsc-watch -p ./tsconfig.dev.json --onSuccess 'yarn start'",
+    "refresh": "rm -rf ./node_modules && yarn",
+    "eslint": "eslint --format table -c .eslintrc  \"src/**/*.{ts,tsx}\"",
+    "prettier": "prettier --check .",
+    "prettier-fix": "prettier --write .",
+    "unit-test": "jest --config ./jest.config.unit.js --verbose",
+    "integration-test": "jest --config ./jest.config.int.js --verbose --runInBand --logHeapUsage",
+    "coverage": "yarn unit-test --coverage",
+    "release-major": "yarn standard-version --release-as major",
+    "release-minor": "yarn standard-version --release-as minor",
+    "release-patch": "yarn standard-version --release-as patch"
+  },
+  "dependencies": {
+    "@hapi/hapi": "20.2.1",
+    "@hapi/inert": "6.0.4",
+    "@hapi/vision": "6.1.0",
+    "glob": "7.2.0",
+    "hapi-swagger": "14.2.4",
+    "joi": "17.5.0",
+    "pino": "7.6.2",
+    "pino-pretty": "7.3.0",
+    "axios": "0.24.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.7",
+    "@types/glob": "7.2.0",
+    "@types/hapi__hapi": "20.0.10",
+    "@types/hapi__inert": "5.2.3",
+    "@types/hapi__vision": "5.5.3",
+    "@types/jest": "27.4.0",
+    "@typescript-eslint/eslint-plugin": "5.9.0",
+    "@typescript-eslint/parser": "5.9.0",
+    "eslint": "8.6.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-jsdoc": "37.5.1",
+    "eslint-plugin-prefer-arrow": "1.2.3",
+    "eslint-plugin-prettier": "4.0.0",
+    "eslint-formatter-table": "7.32.1",
+    "jest": "27.4.7",
+    "prettier": "2.5.1",
+    "standard-version": "9.3.2",
+    "ts-jest": "27.1.2",
+    "tsc-watch": "4.6.0",
+    "typescript": "4.5.4"
+  }
+}
